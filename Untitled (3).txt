@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBangla.AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-800">
+  <header class="bg-green-600 text-white p-4 shadow-md">
+    <h1 class="text-3xl font-bold text-center">🌿 SmartBangla.AI</h1>
+    <p class="text-center">AI-powered Environmental & Disaster Assistant for Bangladesh 🇧🇩</p>
+  </header>
+
+  <main class="p-4 space-y-6">
+    <!-- Flood Prediction -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">🌊 Flood Alert System</h2>
+      <p>Check flood risk in your area based on past data and rainfall.</p>
+      <input type="text" placeholder="Enter your district" class="border p-2 rounded w-full mt-2" id="floodInput">
+      <button onclick="predictFlood()" class="mt-2 bg-green-600 text-white px-4 py-2 rounded">Check Risk</button>
+      <p id="floodResult" class="mt-2 font-semibold"></p>
+    </section>
+
+    <!-- Agriculture Advisor -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">🌾 Smart Agriculture Advisor</h2>
+      <p>Get farming advice based on your soil and weather condition.</p>
+      <select id="season" class="border p-2 rounded mt-2 w-full">
+        <option value="summer">Summer</option>
+        <option value="monsoon">Monsoon</option>
+        <option value="winter">Winter</option>
+      </select>
+      <button onclick="suggestCrop()" class="mt-2 bg-green-600 text-white px-4 py-2 rounded">Get Suggestion</button>
+      <p id="cropResult" class="mt-2 font-semibold"></p>
+    </section>
+
+    <!-- Urban Heat Mapping -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">🌇 Urban Heat Map Alert</h2>
+      <p>Find which areas need more greenery to reduce heat.</p>
+      <p class="mt-2">🔺 High risk in Dhanmondi, Motijheel and Mirpur. More trees needed.</p>
+    </section>
+
+    <!-- Waste Management -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">🗑️ Waste Sorting Guide</h2>
+      <p>Type of waste and how to manage them properly.</p>
+      <p class="mt-2">♻️ Plastic: Recyclable - Use separate bin.<br>🍌 Organic: Compostable - Use for fertilizer.<br>☣️ Toxic: Handle with care.</p>
+    </section>
+
+    <!-- Cyclone Planner -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">🌪️ Cyclone Impact Planner</h2>
+      <p>Plan ahead by knowing past cyclone risks in your district.</p>
+      <p class="mt-2">⚠️ Khulna & Satkhira are most vulnerable. Prepare shelters and supplies early.</p>
+    </section>
+
+    <!-- Air Quality Monitor -->
+    <section class="bg-white rounded-2xl shadow p-4">
+      <h2 class="text-xl font-semibold">💨 Air Quality Monitor</h2>
+      <p>Today’s AQI in Dhaka: <span class="font-bold">180 (Unhealthy)</span></p>
+      <p class="mt-1">😷 Please wear masks and avoid outdoor activity if possible.</p>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm p-4 text-gray-500">
+    Made with ❤️ for Bangladesh by Muntasir
+  </footer>
+
+  <script>
+    function predictFlood() {
+      const input = document.getElementById("floodInput").value.toLowerCase();
+      let result;
+      if (["sylhet", "kurigram", "gaibandha"].includes(input)) {
+        result = "⚠️ High flood risk detected. Please prepare to evacuate if needed.";
+      } else {
+        result = "✅ No major flood risks right now in your district.";
+      }
+      document.getElementById("floodResult").innerText = result;
+    }
+
+    function suggestCrop() {
+      const season = document.getElementById("season").value;
+      let suggestion;
+      if (season === "summer") {
+        suggestion = "Recommended crop: Jute or Sesame.";
+      } else if (season === "monsoon") {
+        suggestion = "Recommended crop: Aman Rice or Maize.";
+      } else {
+        suggestion = "Recommended crop: Potato or Mustard.";
+      }
+      document.getElementById("cropResult").innerText = suggestion;
+    }
+  </script>
+</body>
+</html>
